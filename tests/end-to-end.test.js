@@ -7,14 +7,14 @@ describe('End-to-end Test', () => {
     let homePage;
     let feedbackPage;
     let loginPage
-    let topbar;
+    let topBar;
 
     beforeAll(async () => {
         jest.setTimeout(15000);
         homePage = new HomePage();
         loginPage = new LoginPage();
         feedbackPage = new FeedbackPage();
-        topbar = new TopBar();
+        topBar = new TopBar();
     });
 
     it('should load homepage', async () => {
@@ -29,6 +29,15 @@ describe('End-to-end Test', () => {
             "Johny Tha Sales", 
             "john@email.com", 
             "subject", 
-            "Here comes your lohg message");
-    })
+            "Here comes your lohg message"
+            );
+    });
+
+    it('should login to application', async () => {
+        await homePage.visit();
+        await topBar.isTopBarDisplayed();
+        await topBar.clickSigninButton();
+        await loginPage.isLoginFormDisplayed();
+        await loginPage.login("username", "password");
+    });
 });
