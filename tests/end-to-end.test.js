@@ -3,6 +3,8 @@ import TopBar from "../pages/components/TopBar";
 import LoginPage from "../pages/LoginPage";
 import FeedbackPage from "../pages/FeedbackPage";
 
+import { username, password, timeout } from "../config";
+
 describe('End-to-end Test', () => {
     let homePage;
     let feedbackPage;
@@ -10,7 +12,7 @@ describe('End-to-end Test', () => {
     let topBar;
 
     beforeAll(async () => {
-        jest.setTimeout(15000);
+        jest.setTimeout(timeout);
         homePage = new HomePage();
         loginPage = new LoginPage();
         feedbackPage = new FeedbackPage();
@@ -38,6 +40,6 @@ describe('End-to-end Test', () => {
         await topBar.isTopBarDisplayed();
         await topBar.clickSigninButton();
         await loginPage.isLoginFormDisplayed();
-        await loginPage.login("username", "password");
+        await loginPage.login(username, password);
     });
 });
