@@ -21,7 +21,7 @@ export default class HomePage extends BasePage {
         await page.click("#onlineBankingMenu");
     }
 
-    async clickHomepageLink() {
+    async clickFeedbackLink() {
         await page.click("#feedback");
     }
 }
